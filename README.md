@@ -45,7 +45,7 @@ Este comando desprovisionará todos os recursos criados pelo Terraform, reverten
 **Senha do Administrador:** Defina uma senha forte para o acesso seguro à VM.
 
 ### Considerações Finais
-Certifique-se de configurar corretamente suas credenciais de acesso à Azure no arquivo provider.tf antes de iniciar o processo de implantação.
+Certifique-se de configurar corretamente suas credenciais de acesso à Azure no arquivo main antes de iniciar o processo de implantação.
 Ao finalizar o processo, sua máquina virtual estará disponivel no Portal Azure - Máquinas virtuais (https://portal.azure.com/?quickstart=true#home).
 
 ![image](https://github.com/user-attachments/assets/67f2aa7e-2b73-4611-830f-d49bf7c1f1a4)

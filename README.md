@@ -1,37 +1,69 @@
-## Leia-me: Implantando WordPress na Azure com Terraform
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implantação de WordPress na Azure com Terraform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #e8e8e8;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .important {
+            background-color: #f9f9f9;
+            border-left: 5px solid #ffcc00;
+            padding: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
 
-Este guia detalha como implantar um site WordPress completo na Azure usando o Terraform. A automação completa provisiona uma VM, instala o Docker, configura e executa containers separados para o WordPress e o banco de dados MySQL, e garante a retenção de dados durante upgrades do WordPress.
+    <h1>Implantação de WordPress na Azure com Terraform</h1>
 
-**Pré-requisitos:**
+    <p>Este guia descreve como configurar um site WordPress completo na Azure utilizando Terraform. O processo automatizado inclui o provisionamento de uma máquina virtual, instalação do Docker e configuração de containers separados para o WordPress e MySQL, garantindo persistência dos dados durante atualizações.</p>
 
-* Conta Azure com acesso ao CLI da Azure
-* Conta GitHub
-* Terraform instalado localmente
-* Conhecimento básico de Terraform, Docker e WordPress
+    <h2>Passos</h2>
 
-**Instruções:**
+    <ol>
+        <li><strong>Clone o Repositório:</strong> Faça o download deste repositório GitHub para o seu computador.</li>
+        
+        <li><strong>Inicialize o Terraform:</strong> No diretório principal do projeto, abra um terminal e execute os seguintes comandos:</li>
+        <ul>
+            <li><code>terraform init</code>: Inicializa o Terraform e faz o download dos provedores necessários.</li>
+            <li><code>terraform plan</code>: Gera um plano de execução que mostra as modificações que serão realizadas.</li>
+            <li><code>terraform apply</code>: Aplica as modificações e provisiona os recursos na Azure.</li>
+        </ul>
 
-1. **Clone o Repositório:** Clone este repositório GitHub para sua máquina local.
-2. **Configure as Variáveis:** Edite o arquivo `variables.tf` no diretório raiz do projeto e defina as variáveis de acordo com seu ambiente:
-    * `resource_group_name`: Nome do grupo de recursos da Azure
-    * `location`: Local da instância da VM da Azure
-    * `admin_username`: Nome de usuário do administrador da VM
-    * `admin_password`: Senha do administrador da VM
-    * `network_security_group_name`: Nome do grupo de segurança da rede
-3. **Inicialize o Terraform:** Abra um terminal no diretório raiz do projeto e execute os seguintes comandos:
-    * `terraform init`: Inicializa o Terraform e baixa os provedores necessários
-    * `terraform plan`: Gera um plano de execução que mostra as alterações que serão feitas
-    * `terraform apply`: Aplica as alterações e provisiona os recursos na Azure
-4. **Acesse o WordPress:** Aguarde a conclusão da aplicação do Terraform. O endereço IP da VM contendo o WordPress será exibido na saída do comando `terraform apply`. Acesse este endereço em um navegador web para visualizar o site WordPress.
-5. **Destruição da Infraestrutura**: Se você não precisar mais da infraestrutura provisionada, você pode destruí-la usando o comando:
-    * `terraform destroy`: Destrói todos os recursos criados pelo Terraform
+        <li><strong>Acesse o WordPress:</strong> Após a execução do Terraform, o endereço IP da VM será exibido na saída do comando <code>terraform apply</code>. Acesse esse IP em seu navegador para visualizar o site WordPress.</li>
+        
+        <li><strong>Aguardar 30 segundos:</strong> Aguarde 30 segundos para garantir que os containers estão totalmente inicializados.</li>
+        
+        <li><strong>Remova a Infraestrutura:</strong> Se você não precisar mais dos recursos provisionados, remova-os com o comando <code>terraform destroy</code>. Este comando apaga todos os recursos criados pelo Terraform.</li>
+    </ol>
 
-**Observações:**
+    <h2>Informações</h2>
+    <ul>
+        <li><strong>resource_group_name:</strong> Nome do grupo de recursos na Azure.</li>
+        <li><strong>location:</strong> Região onde a VM será implantada na Azure.</li>
+        <li><strong>admin_username:</strong> Nome do usuário administrador da VM.</li>
+        <li><strong>admin_password:</strong> Senha do administrador da VM.</li>
+    </ul>
 
-* Este script Terraform usa uma imagem Docker pública para o WordPress. Você pode personalizar a imagem se necessário.
-* O script cria um volume separado para armazenar os dados do WordPress. Isso garante que os dados sejam preservados durante upgrades do WordPress.
-* Para mais informações sobre o Terraform, Docker e WordPress, consulte a documentação oficial de cada ferramenta.
+    <div class="important">
+        <h3>Notas:</h3>
+        <p>Certifique-se de configurar as credenciais para conexão com a CLI no arquivo <strong>provider.tf</strong> antes de executar os comandos do Terraform.</p>
+    </div>
 
-**Suporte:**
-
-Se você tiver dúvidas ou problemas, sinta-se à vontade para abrir um problema neste repositório GitHub.
+</body>
+</html>

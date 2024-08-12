@@ -37,5 +37,3 @@ module "vm" {
   admin_password      = var.admin_password
   network_interface_id = module.network.network_interface_id
 }
-
-# Saída do IP público da máquina virtual
